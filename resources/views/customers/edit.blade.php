@@ -51,8 +51,11 @@
                         </div>
                         <div class="form-group">
                             <label for="">Country ID</label>
-                            <input type="number" name="country_id" class="form-control"
-                                placeholder="Edit Your Country ID" value="{{ $customer->country_id }}">
+                            <select name="country_id" class="form-control">
+                                <?php foreach($countries as $key=>$country) :  ?>
+                                <option value="{{ $key }}">{{ $country }}</option>
+                                <?php endforeach;  ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Status</label>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
+
+
 class CustomersController extends Controller
 {
     /**
@@ -15,8 +17,8 @@ class CustomersController extends Controller
     public function index()
     {
         $customers = Customer::get();
-
-        return view('customers.index', compact('customers'));
+        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        return view('customers.index', compact('customers', 'countries'));
     }
 
     /**
@@ -26,8 +28,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        $countries = array(1=>'Bangladesh', 2=>'India');
-
+        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
         return view('customers.create', compact('countries'));
     }
 
@@ -56,7 +57,7 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->status;
-       // $customer->image_file = $request->image_file;
+        // $customer->image_file = $request->image_file;
         $customer->save();
 
         return redirect()->route('customers.index')->with('Success', 'Customer Created Successfully');
@@ -68,9 +69,8 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        
     }
 
     /**
@@ -82,8 +82,8 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-
-        return view('customers.edit', compact('customer'));
+        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        return view('customers.edit', compact('customer', 'countries'));
     }
 
     /**
@@ -101,7 +101,7 @@ class CustomersController extends Controller
             'email' => 'required|max:100',
             'address' => 'required|max:255',
             'dob' => 'required|date',
-            'country_id' => 'numeric|required|min:1'
+            'country_id' => 'numeric|required|min:1',
         ]);
 
         $customer->name = $request->name;

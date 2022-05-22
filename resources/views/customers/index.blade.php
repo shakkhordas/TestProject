@@ -46,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customers as $data)
+                                @foreach ($customers as $key => $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $data->name }}</td>
@@ -54,7 +54,7 @@
                                         <td>{{ $data->email }}</td>
                                         <td>{{ $data->address }}</td>
                                         <td>{{ $data->dob }}</td>
-                                        <td>{{ $data->country_id }}</td>
+                                        <td>{{ $data->key }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
