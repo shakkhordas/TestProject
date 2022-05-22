@@ -55,7 +55,7 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->status;
-        // $customer->image_file = $request->image_file;
+        $customer->image_file = $request->image_file;
         $customer->save();
 
         return redirect()->route('customers.index')->with('Success', 'Customer Created Successfully');
@@ -109,6 +109,7 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->status;
+        $customer->image_file = $request->image_file;
         $customer->save();
 
      
