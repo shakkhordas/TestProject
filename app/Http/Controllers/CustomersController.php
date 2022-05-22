@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
-
-
 class CustomersController extends Controller
 {
     /**
@@ -113,9 +111,10 @@ class CustomersController extends Controller
         $customer->status = $request->status;
         $customer->save();
 
+     
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
