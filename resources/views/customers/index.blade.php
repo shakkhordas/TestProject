@@ -50,7 +50,7 @@
                                 @foreach ($customers as $key => $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img src="{{ url('asset(img/)',$data->image_file) }}" /></td>
+                                        <td><img src="{{ url('img/', $data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
