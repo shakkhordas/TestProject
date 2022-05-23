@@ -42,11 +42,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($customers)
+                            @if ($customers->isNotEmpty())
                                 @foreach ($customers as $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img style="height:100px; width=100px;"
+                                        <td><img class="img-circle" height="50" width="50"
                                                 src="{{ url('img/', $data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>

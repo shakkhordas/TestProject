@@ -54,7 +54,7 @@
                                 @foreach ($customers as $key => $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img class="img-circle" height="100" width="100"
+                                        <td><img class="img-circle" height="50" width="50"
                                                 src="{{ url('img/', $data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
