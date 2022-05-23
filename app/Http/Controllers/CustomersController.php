@@ -74,17 +74,7 @@ class CustomersController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        /*
-        $customers = Customer::when($search, function($query, $search){
-            return $query->where('name', 'LIKE', '%'.$search.'%');
-        })
-        ->when($search, function($query, $search){
-            return $query->orWhere('email', 'LIKE', '%'.$search.'%');
-        })
-        ->when($search, function($query, $search){
-            return $query->orWhere('mobile', 'LIKE', '%'.$search.'%');
-        });
-        */
+
         $customers = Customer::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('mobile', 'LIKE', '%' . $search . '%')
