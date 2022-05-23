@@ -5,10 +5,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="{{ url('customers/index') }}" class="nav-link">Customers</a>
+                        <a href="{{ url('customers/index') }}" class=" navbar-brand nav-link">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('users/index') }}" class="nav-link">Users</a>
+                        <a href="{{ url('users/index') }}" class="navbar-brand nav-link">Users</a>
                     </li>
                 </ul>
             </div>

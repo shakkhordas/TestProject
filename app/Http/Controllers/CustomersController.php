@@ -27,6 +27,7 @@ class CustomersController extends Controller
     public function create()
     {
         $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+
         return view('customers.create', compact('countries'));
     }
 
@@ -67,8 +68,14 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show()
     {
+        $customers = Customer::get();
+        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        $customers = $customers->toArray();
+        $string = 'country_id';
+        //echo $countries[$customers[0][$string]];
+        //dd($customers);
     }
 
     public function search(Request $request)
@@ -127,7 +134,6 @@ class CustomersController extends Controller
         $customer->status = $request->status;
         $customer->image_file = $request->image_file;
         $customer->save();
-
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
