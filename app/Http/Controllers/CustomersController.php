@@ -71,6 +71,21 @@ class CustomersController extends Controller
     {
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $customers = Customer::query()
+            ->where('name', 'LIKE', '%{search}%')
+            ->orWhere('email', 'LIKE', '%{search}%')
+            ->orWhere('mobile', 'LIKE', '%{search}%')
+            ->get();
+
+        //dd($customers);
+
+        return view('customers.search', compact('customers'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -112,10 +127,10 @@ class CustomersController extends Controller
         $customer->image_file = $request->image_file;
         $customer->save();
 
-     
+
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

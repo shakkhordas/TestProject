@@ -28,14 +28,8 @@ Route::get('users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edi
 Route::post('users/update', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
 Route::delete('users/delete', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.delete');
 
-Route::get('blogs/index', [App\Http\Controllers\BlogsController::class, 'index'])->name('blogs.index');
-Route::get('blogs/create', [App\Http\Controllers\BlogsController::class, 'create'])->name('blogs.create');
-Route::post('blogs/create', [App\Http\Controllers\BlogsController::class, 'store'])->name('blogs.store');
-Route::get('blogs/edit/{id}', [App\Http\Controllers\BlogsController::class, 'edit'])->name('blogs.edit');
-Route::post('blogs/update', [App\Http\Controllers\BlogsController::class, 'update'])->name('blogs.update');
-Route::delete('blogs/delete', [App\Http\Controllers\BlogsController::class, 'destroy'])->name('blogs.delete');
-
 Route::get('customers/index', [App\Http\Controllers\CustomersController::class, 'index'])->name('customers.index');
+Route::get('customers/search', [App\Http\Controllers\CustomersController::class, 'search'])->name('customers.search');
 Route::get('customers/create', [App\Http\Controllers\CustomersController::class, 'create'])->name('customers.create');
 Route::post('customers/create', [App\Http\Controllers\CustomersController::class, 'store'])->name('customers.store');
 Route::get('customers/edit/{id}', [App\Http\Controllers\CustomersController::class, 'edit'])->name('customers.edit');
