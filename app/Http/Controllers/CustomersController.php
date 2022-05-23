@@ -55,7 +55,7 @@ class CustomersController extends Controller
         $customer->address = $request->address;
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
-        $customer->status = $request->status;
+        $customer->status = $request->has('status');
         $customer->image_file = $request->image_file;
         $customer->save();
 
@@ -71,11 +71,7 @@ class CustomersController extends Controller
     public function show()
     {
         $customers = Customer::get();
-        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
-        $customers = $customers->toArray();
-        $string = 'country_id';
-        //echo $countries[$customers[0][$string]];
-        //dd($customers);
+        dd($customers);
     }
 
     public function search(Request $request)
@@ -131,7 +127,7 @@ class CustomersController extends Controller
         $customer->address = $request->address;
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
-        $customer->status = $request->status;
+        $customer->status = $request->has('status');        
         $customer->image_file = $request->image_file;
         $customer->save();
 

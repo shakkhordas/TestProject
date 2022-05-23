@@ -61,8 +61,14 @@
                                         <td>{{ $data->email }}</td>
                                         <td>{{ $data->address }}</td>
                                         <td>{{ $data->dob }}</td>
-                                        <td>{{ $data->country_id }}</td>
-                                        <td>{{ $data->status }}</td>
+                                        <td>{{ $countries[$data->country_id] }}</td>
+                                        <td>
+                                            @if($data->status)
+                                                <img src="{{ url('img/check-solid.svg') }}" height="10" width="10">
+                                            @else
+                                                <img src="{{ url('img/xmark-solid.svg') }}" height="10" width="10">
+                                            @endif
+                                        </td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
                                         <td>
