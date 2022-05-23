@@ -32,7 +32,7 @@
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
                     <div style="text-align:right">
-                        <a href="{{ url('customers/create') }}"><button type="button" class="btn btn-dark">New
+                        <a href="{{ url('customers/create') }}"><button type="button" class="btn btn-warning">New
                                 Customer</button></a>
                     </div>
                     <div class="table-responsive">
@@ -64,9 +64,9 @@
                                         <td>{{ $countries[$data->country_id] }}</td>
                                         <td>
                                             @if($data->status)
-                                                <img src="{{ url('img/check-solid.svg') }}" height="10" width="10">
+                                                <strong class="text-success text-align-justify">Active</strong>
                                             @else
-                                                <img src="{{ url('img/xmark-solid.svg') }}" height="10" width="10">
+                                                <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
@@ -76,7 +76,7 @@
                                                 onsubmit="return confirm('Are you sure you want to delete ?')">
                                                 @csrf
                                                 @method('Delete')
-                                                <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                                <input type="submit" value="Delete" class="btn btn-danger">
                                             </form>
                                         </td>
                                     </tr>
