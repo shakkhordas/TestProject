@@ -69,7 +69,7 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href=""><button type="button" class="btn btn-info btn-sm">View Product
+                                        <td><a href="#"><button type="button" class="btn btn-info btn-sm">View Product
                                                     List</button></a></td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
