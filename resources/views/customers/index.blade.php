@@ -28,7 +28,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-100">
                     <form action="{{ route('customers.search') }}" class="form-group" method="GET">
-                        <input type="text" name="search" required/>
+                        <input type="text" name="search" required />
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
                     <div style="text-align:right">
@@ -54,7 +54,8 @@
                                 @foreach ($customers as $key => $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img src="{{ url('img/', $data->image_file) }}" /></td>
+                                        <td><img class="img-circle" height="100" width="100"
+                                                src="{{ url('img/', $data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>

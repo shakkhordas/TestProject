@@ -13,8 +13,6 @@
                             class="navbar-brand">Users</a></button>
                     <button class="btn btn-dark"><a href="{{ url('customers/index') }}"
                             class="navbar-brand">Customers</a></button>
-                    <button class="btn btn-dark"><a href="{{ url('blogs/index') }}"
-                            class="navbar-brand">Blogs</a></button>
                 </div>
             </div>
         </div>

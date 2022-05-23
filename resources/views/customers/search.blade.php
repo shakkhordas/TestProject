@@ -42,11 +42,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                @if ($customers->isNotEmpty())
-                                    @foreach ($customers as $data)
+                            @if ($customers)
+                                @foreach ($customers as $data)
+                                    <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img src="{{ url('img/', $data->image_file) }}" /></td>
+                                        <td><img style="height:100px; width=100px;"
+                                                src="{{ url('img/', $data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
@@ -64,13 +65,14 @@
                                                 <input type="submit" value="Delete" class="btn btn-outline-danger">
                                             </form>
                                         </td>
-                                    @endforeach
-                                    @else
-                                        <div class="">
-                                            <h2>NO CUSTOMERS FOUND</h2>
-                                        </div>
-                                @endif
-                            </tr>
+                                        <br>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <div class="">
+                                    <h2>NO CUSTOMERS FOUND</h2>
+                                </div>
+                            @endif
                         </tbody>
                     </table>
                 </div>
