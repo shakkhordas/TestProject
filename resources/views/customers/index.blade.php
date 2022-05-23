@@ -46,7 +46,7 @@
                                     <th scope="col">Email</td>
                                     <th scope="col">Address</td>
                                     <th scope="col">Date of Birth</td>
-                                    <th scope="col">Country ID</td>
+                                    <th scope="col">Country</td>
                                     <th scope="col">Status</td>
                                 </tr>
                             </thead>

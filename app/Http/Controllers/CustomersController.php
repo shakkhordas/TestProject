@@ -77,7 +77,7 @@ class CustomersController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-
+        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
         $customers = Customer::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('mobile', 'LIKE', '%' . $search . '%')
@@ -87,7 +87,7 @@ class CustomersController extends Controller
 
         //dd($customers);
 
-        return view('customers.search', compact('customers'));
+        return view('customers.search', compact('customers', 'countries'));
     }
 
     /**

@@ -53,8 +53,14 @@
                                         <td>{{ $data->email }}</td>
                                         <td>{{ $data->address }}</td>
                                         <td>{{ $data->dob }}</td>
-                                        <td>{{ $data->country_id }}</td>
-                                        <td>{{ $data->status }}</td>
+                                        <td>{{ $countries[$data->country_id] }}</td>
+                                        <td>
+                                            @if ($data->status)
+                                                <strong class="text-success text-align-justify">Active</strong>
+                                            @else
+                                                <strong class="text-danger text-align-justify">Inactive</strong>
+                                            @endif
+                                        </td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
                                         <td>
