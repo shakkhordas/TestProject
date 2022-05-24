@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Storage;
 
 class CustomersController extends Controller
 {
@@ -14,6 +15,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
+        
         $customers = Customer::get();
         $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
         return view('customers.index', compact('customers', 'countries'));
@@ -27,7 +29,6 @@ class CustomersController extends Controller
     public function create()
     {
         $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
-
         return view('customers.create', compact('countries'));
     }
 
@@ -42,7 +43,7 @@ class CustomersController extends Controller
         $isValidated = $request->validate([
             'name' => 'required|max:200',
             'mobile' => 'required|max:11',
-            'email' => 'required|max:100',
+            'email' => 'email|required|max:100',
             'address' => 'required|max:255',
             'dob' => 'required|date',
             'country_id' => 'numeric|required|min:1'
@@ -127,8 +128,10 @@ class CustomersController extends Controller
         $customer->address = $request->address;
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
-        $customer->status = $request->has('status');        
-        $customer->image_file = $request->image_file;
+        $customer->status = $request->has('status');  
+        if(!empty($request->image_file)){   
+            $customer->image_file = $request->image_file;
+        }
         $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');

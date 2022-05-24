@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Customers List') }}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -32,15 +32,16 @@
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
                     <div style="text-align:right">
-                        <a href="{{ url('customers/create') }}"><button type="button" class="btn btn-warning">New
+                        <a href="{{ url('customers/create') }}">
+                            <button type="button" class="btn btn-warning">New
                                 Customer</button></a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">ID</td>
-                                    <th scope="col">Image</th>
+                                    <th scope="col">Sl.</td>
+                                    <th scope="col">Photo</th>
                                     <th scope="col">Name</td>
                                     <th scope="col">Mobile</td>
                                     <th scope="col">Email</td>
@@ -55,7 +56,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="50" width="50"
-                                                src="{{ url('img/', $data->image_file) }}" /></td>
+                                                src="{{ Storage::url($data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
@@ -69,8 +70,8 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="#"><button type="button" class="btn btn-info btn-sm">View Product
-                                                    List</button></a></td>
+                                        <td><a href="#"><button type="button" class="btn btn-info">View</button></a>
+                                        </td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
                                         <td>

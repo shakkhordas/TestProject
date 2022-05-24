@@ -7,7 +7,7 @@
         <button class="btn btn-dark"><a href="{{ url('customers/index') }}"
                 class="navbar-brand">Customers</a></button>
     </x-slot>
-    <div class="py-12">
+    <div class="py-12 w-50 container-fluid">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -24,32 +24,32 @@
 
                     <form action="{{ route('customers.store') }}" method="POST">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter Customer Name"
                                 value="{{ old('name') }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Mobile</label>
                             <input type="text" name="mobile" class="form-control" placeholder="Enter Customer Mobile"
                                 value="{{ old('mobile') }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Enter Customer Email"
                                 value="{{ old('email') }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Address</label>
                             <input type="text" name="address" class="form-control"
                                 placeholder="Enter Customer Address" value="{{ old('address') }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Date of Birth</label>
                             <input type="date" name="dob" class="form-control"
                                 placeholder="Enter Customer Date of Birth" value="{{ old('dob') }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Country ID</label>
                             <select name="country_id" class="form-control">
                                 <?php foreach($countries as $key=>$country) :  ?>
@@ -57,12 +57,12 @@
                                 <?php endforeach;  ?>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-xs-2">
                             <label for="">Status</label>
                             <input type="checkbox" name="status" value="{{ old('status') }}">
                         </div>
-                        <div class="form-group">
-                            <label for="">Image File</label>
+                        <div class="form-group col-xs-2">
+                            <label for="">Upload Photo</label>
                             <input type="file" name="image_file" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">Create</button>
