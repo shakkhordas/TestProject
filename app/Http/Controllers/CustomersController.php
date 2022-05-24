@@ -16,7 +16,7 @@ class CustomersController extends Controller
     public function index()
     {
         
-        $customers = Customer::get();
+        $customers = Customer::paginate(10);
         $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
         return view('customers.index', compact('customers', 'countries'));
     }

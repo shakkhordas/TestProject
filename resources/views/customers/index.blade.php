@@ -2,18 +2,17 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Customers List') }}
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="{{ url('customers/index') }}" class=" navbar-brand nav-link">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('users/index') }}" class="navbar-brand nav-link">Users</a>
-                    </li>
-                </ul>
-            </div>
-
         </h2>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="{{ url('customers/index') }}" class=" navbar-brand nav-link">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('users/index') }}" class="navbar-brand nav-link">Users</a>
+                </li>
+            </ul>
+        </div>
 
         <!--<h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {__('Dashboard') }}
@@ -56,7 +55,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="50" width="50"
-                                                src="{{ Storage::url($data->image_file) }}" /></td>
+                                                src="{{ Storage::url('storage/'.$data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
@@ -90,5 +89,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mt-5 p-5">
+        {{$customers->links()}}
     </div>
 </x-app-layout>

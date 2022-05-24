@@ -1,19 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{__('Dashboard') }}
+            {{ __('Dashboard') }}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="{{url('customers/index')}}" class="nav-link">Customers</a>
+                        <a href="{{ url('customers/index') }}" class="nav-link">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('users/index')}}" class="nav-link">Users</a>
+                        <a href="{{ url('users/index') }}" class="nav-link">Users</a>
                     </li>
                 </ul>
             </div>
-       </h2>
-        
+        </h2>
+
         <!--<h2 class="font-semibold text-xl text-gray-800 leading-tight">
              {__('Dashboard') }}
         </h2>
@@ -38,9 +38,9 @@
                             <tbody>
                                 @foreach ($users as $data)
                                     <tr>
-                                        <th scope="row">{{$data->id}}</th>
-                                        <td>{{$data->name}}</td>
-                                        <td>{{$data->email}}</td>
+                                        <th scope="row">{{ $data->id }}</th>
+                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->email }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -49,5 +49,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pt-5 p-5">
+        {{ $users->links() }}
     </div>
 </x-app-layout>

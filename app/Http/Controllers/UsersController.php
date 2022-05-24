@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = DB::select('SELECT * FROM users');
+        $users = User::paginate(10);
+        //dd($users);
         return view('users.index', ['users'=>$users]);
     }
 
