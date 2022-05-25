@@ -22,11 +22,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-/*
 Route::get('/tryout', function() {
-    config('app.countries');
+    return view('test');
 });
-*/
+
 
 Route::get('users/index', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
 Route::get('users/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');

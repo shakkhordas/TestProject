@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageServiceProvider;
 
 class CustomersController extends Controller
 {
@@ -60,6 +61,8 @@ class CustomersController extends Controller
         $customer->status = $request->has('status');
         $customer->image_file = $request->image_file;
         $customer->save();
+
+        //dd($customer);
 
         return redirect()->route('customers.index')->with('Success', 'Customer Created Successfully');
     }
@@ -130,9 +133,11 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');
+        
         if (!empty($request->image_file)) {
             $customer->image_file = $request->image_file;
         }
+
         $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
