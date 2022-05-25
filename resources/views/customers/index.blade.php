@@ -83,7 +83,7 @@
             </div>
         </div>
         <div class="mt-5 p-5">
-            {{$customers->links()}}
+            {{ $customers->links() }}
         </div>
     </div>
 </x-app-layout>

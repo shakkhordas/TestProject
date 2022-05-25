@@ -15,7 +15,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        
+
         $customers = Customer::paginate(10);
         $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
         return view('customers.index', compact('customers', 'countries'));
@@ -129,8 +129,8 @@ class CustomersController extends Controller
         $customer->address = $request->address;
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
-        $customer->status = $request->has('status');  
-        if(!empty($request->image_file)){
+        $customer->status = $request->has('status');
+        if (!empty($request->image_file)) {
             $customer->image_file = $request->image_file;
         }
         $customer->save();

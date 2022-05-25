@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="pt-5 p-5">
+    <div class="mt-5 p-5">
         {{ $users->links() }}
     </div>
 </x-app-layout>
