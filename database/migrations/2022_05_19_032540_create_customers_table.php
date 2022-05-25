@@ -22,7 +22,8 @@ class CreateCustomersTable extends Migration
             $table->date('dob');
             $table->smallInteger('country_id');
             $table->smallInteger('status');
-            $table->string('image_file');
+            //we don't store the image, we store the path to the image
+            $table->string('image_file')->nullable();
             $table->timestamps();
         });
     }
