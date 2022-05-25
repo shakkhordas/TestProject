@@ -48,8 +48,8 @@
                                 @foreach ($customers as $key => $data)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img class="img-circle" height="50" width="50"
-                                                src="" /></td>
+                                        <td><img class="img-circle" height="75" width="75"
+                                                src="{{$data->image_file ? asset('storage/').$data->image_file : asset('img/No_image_available.png')}}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>

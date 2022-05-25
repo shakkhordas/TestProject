@@ -145,7 +145,7 @@ class CustomersController extends Controller
 
         $customer->save();
 
-        dd($customer);
+        //dd($customer);
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
