@@ -38,4 +38,4 @@ Route::get('customers/edit/{id}', [App\Http\Controllers\CustomersController::cla
 Route::put('customers/update/{customer}', [App\Http\Controllers\CustomersController::class, 'update'])->name('customers.update');
 Route::delete('customers/delete/{customer}', [App\Http\Controllers\CustomersController::class, 'destroy'])->name('customers.delete');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -133,11 +133,12 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');
-        
+
         /*
         if (!empty($request->image_file)) {
             $customer->image_file = $request->image_file;
         }*/
+
 
         if ($request->hasFile('image_file')) {
             $customer['image_file'] = $request->file('image_file')->store('img', 'public');
