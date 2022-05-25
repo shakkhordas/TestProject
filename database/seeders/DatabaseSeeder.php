@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Customer;
+use App\Models\User;
+
 use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        // \App\Models\User::factory(10)->create();
-        // \App\Models\Customer::factory(20)->create();
+        // User::factory(10)->create();
+        // Customer::factory(20)->create();
     }
 }

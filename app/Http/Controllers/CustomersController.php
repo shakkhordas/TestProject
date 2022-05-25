@@ -50,6 +50,7 @@ class CustomersController extends Controller
         ]);
 
         $customer = new Customer;
+
         $customer->name = $request->name;
         $customer->mobile = $request->mobile;
         $customer->email = $request->email;
@@ -72,7 +73,7 @@ class CustomersController extends Controller
     public function show()
     {
         $customers = Customer::get();
-        dd($customers);
+        //dd($customers);
     }
 
     public function search(Request $request)
@@ -129,7 +130,7 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');  
-        if(!empty($request->image_file)){   
+        if(!empty($request->image_file)){
             $customer->image_file = $request->image_file;
         }
         $customer->save();

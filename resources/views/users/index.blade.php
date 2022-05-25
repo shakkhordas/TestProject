@@ -1,18 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="{{ url('customers/index') }}" class="nav-link">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('users/index') }}" class="nav-link">Users</a>
-                    </li>
-                </ul>
-            </div>
+            {{ __('List of') }}
         </h2>
+        <button class="btn btn-dark"><a href="{{ url('users/index') }}" class="navbar-brand">Users</a></button>
+        <button class="btn btn-dark"><a href="{{ url('customers/index') }}"
+                class="navbar-brand">Customers</a></button>
 
         <!--<h2 class="font-semibold text-xl text-gray-800 leading-tight">
              {__('Dashboard') }}
