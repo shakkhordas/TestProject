@@ -26,7 +26,8 @@
                     <div style="text-align:right">
                         <a href="{{ url('customers/create') }}">
                             <button type="button" class="btn btn-warning">New
-                                Customer</button></a>
+                                Customer</button>
+                        </a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
@@ -48,12 +49,12 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="50" width="50"
-                                                src="{{ $data->image_file }}" /></td>
+                                                src="{{ asset($data->image_file) }}" /></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
                                         <td>{{ $data->address }}</td>
-                                        <td>{{ $data->dob }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($data->dob)) }}</td>
                                         <td>{{ $countries[$data->country_id] }}</td>
                                         <td>
                                             @if ($data->status)
