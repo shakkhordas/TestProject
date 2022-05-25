@@ -133,9 +133,19 @@ class CustomersController extends Controller
         $customer->dob = $request->dob;
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');
-        
+        /*
         if (!empty($request->image_file)) {
             $customer->image_file = $request->image_file;
+        }*/
+
+        if ($request->hasFile('image_file')) {
+            $image = $request->file('image_file');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            Image::make('image_file')
+                ->resize(160, 160)
+                ->save(public_path() . '/images/' . $fileName);
+            $customer->image_file = $fileName;
+            dd($customer);
         }
 
         $customer->save();
