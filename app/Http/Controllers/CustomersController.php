@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Country;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
 
@@ -18,7 +19,10 @@ class CustomersController extends Controller
     {
 
         $customers = Customer::simplePaginate(10);
-        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        $countries = Country::countriesCollection();
+
+        //dd($countries);
+        
         return view('customers.index', compact('customers', 'countries'));
     }
 
@@ -29,7 +33,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        $countries = Country::countriesCollection();
         return view('customers.create', compact('countries'));
     }
 
@@ -76,13 +80,15 @@ class CustomersController extends Controller
     public function show()
     {
         $customer = Customer::get();
-        return view('customers.show', compact($customer));
+        $countries = Country::countriesCollection();
+        
+        return view('customers.show', compact('customer', 'countries'));
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        $countries = Country::countriesCollection();
         $customers = Customer::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('mobile', 'LIKE', '%' . $search . '%')
@@ -104,7 +110,7 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        $countries = array(1 => 'Bangladesh', 2 => 'India', 3 => 'Sri Lanka');
+        $countries = Country::countriesCollection();
         return view('customers.edit', compact('customer', 'countries'));
     }
 

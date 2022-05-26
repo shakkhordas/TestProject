@@ -19,12 +19,6 @@ return [
     | Array to extract data from
     */
 
-    'countries' => [
-        1 => 'Bangladesh',
-        2 => 'India',
-        3 => 'Sri Lanka'
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
