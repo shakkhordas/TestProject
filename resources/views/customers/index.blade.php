@@ -38,7 +38,6 @@
                                     <th scope="col">Name</td>
                                     <th scope="col">Mobile</td>
                                     <th scope="col">Email</td>
-                                    <th scope="col">Address</td>
                                     <th scope="col">Date of Birth</td>
                                     <th scope="col">Country</td>
                                     <th scope="col">Status</td>
@@ -54,7 +53,6 @@
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->mobile }}</td>
                                         <td>{{ $data->email }}</td>
-                                        <td>{{ $data->address }}</td>
                                         <td>{{ date('d/m/Y', strtotime($data->dob)) }}</td>
                                         <td>{{ $countries[$data->country_id] }}</td>
                                         <td>
@@ -64,7 +62,7 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="#"><button type="button" class="btn btn-info">View</button></a>
+                                        <td><a href="{{ url('customers/show') }}"><button type="button" class="btn btn-info">View</button></a>
                                         </td>
                                         <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
@@ -84,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-5 p-5">
+        <div class="d-flex justify-content-center mt-5 p-5">
             {{ $customers->links() }}
         </div>
     </div>
