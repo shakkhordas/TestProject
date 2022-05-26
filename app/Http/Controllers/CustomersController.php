@@ -64,7 +64,7 @@ class CustomersController extends Controller
 
         //dd($customer);
 
-        return redirect()->route('customers.index')->with('Success', 'Customer Created Successfully');
+        return redirect()->route('customers.index')->with('success', 'Customer Created Successfully');
     }
 
     /**
