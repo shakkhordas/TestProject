@@ -44,30 +44,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customers as $key => $data)
+                                @foreach ($customers as $key => $customer)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="75" width="75"
-                                                src="{{ $data->image_file ? asset('storage/') . $data->image_file : asset('img/No_image_available.png') }}" />
+                                                src="{{ $customer->image_file ? asset('storage/') . $customer->image_file : asset('img/No_image_available.png') }}" />
                                         </td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->mobile }}</td>
-                                        <td>{{ $data->email }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($data->dob)) }}</td>
-                                        <td>{{ $countries[$data->country_id] }}</td>
+                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->mobile }}</td>
+                                        <td>{{ $customer->email }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($customer->dob)) }}</td>
+                                        <td>{{ $customer->country->name ?? '' }}</td>
                                         <td>
-                                            @if ($data->status)
+                                            @if ($customer->status)
                                                 <strong class="text-success text-align-justify">Active</strong>
                                             @else
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="{{ url('customers/show') }}"><button type="button" class="btn btn-info">View</button></a>
+                                        <td><a href="{{ url('customers/show') }}"><button type="button"
+                                                    class="btn btn-info">View</button></a>
                                         </td>
-                                        <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
+                                        <td><a href="{{ url('customers/edit', $customer->id) }}"><button type="button"
                                                     class="btn btn-primary">Edit</button></a></td>
                                         <td>
-                                            <form action="{{ route('customers.delete', $data) }}" method="POST"
+                                            <form action="{{ route('customers.delete', $customer) }}" method="POST"
                                                 onsubmit="return confirm('Are you sure you want to delete ?')">
                                                 @csrf
                                                 @method('Delete')
@@ -83,7 +84,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center mt-5 p-5">
-            {{ $customers->links() }}
+
         </div>
     </div>
 </x-app-layout>

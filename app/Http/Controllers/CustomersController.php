@@ -18,12 +18,9 @@ class CustomersController extends Controller
     public function index()
     {
 
-        $customers = Customer::simplePaginate(10);
-        $countries = Country::countriesCollection();
+        $customers = Customer::get();
 
-        //dd($countries);
-        
-        return view('customers.index', compact('customers', 'countries'));
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -33,8 +30,13 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        $countries = Country::countriesCollection();
-        return view('customers.create', compact('countries'));
+        $customers = Customer::get();
+        // $countries = array([
+        //     1 => 'Bangladesh',
+        //     2 => 'India',
+        //     3 => 'Sri Lanka',
+        // ]);
+        return view('customers.create', compact('customers'));
     }
 
     /**
@@ -80,15 +82,13 @@ class CustomersController extends Controller
     public function show()
     {
         $customer = Customer::get();
-        $countries = Country::countriesCollection();
         
-        return view('customers.show', compact('customer', 'countries'));
+        return view('customers.show', compact('customer'));
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $countries = Country::countriesCollection();
         $customers = Customer::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('mobile', 'LIKE', '%' . $search . '%')
@@ -98,7 +98,7 @@ class CustomersController extends Controller
 
         //dd($customers);
 
-        return view('customers.search', compact('customers', 'countries'));
+        return view('customers.search', compact('customers'));
     }
 
     /**
@@ -110,8 +110,12 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        $countries = Country::countriesCollection();
-        return view('customers.edit', compact('customer', 'countries'));
+        // $countries = array([
+        //     1 => 'Bangladesh',
+        //     2 => 'India',
+        //     3 => 'Sri Lanka',
+        // ]);
+        return view('customers.edit', compact('customer'));
     }
 
     /**

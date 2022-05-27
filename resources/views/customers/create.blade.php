@@ -52,8 +52,8 @@
                         <div class="form-group col-xs-2">
                             <label for="">Country ID</label>
                             <select name="country_id" class="form-control">
-                                <?php foreach($countries as $key=>$country) :  ?>
-                                <option value="{{ $key }}">{{ $country }}</option>
+                                <?php foreach($customers as $key => $customer) :  ?>
+                                <option value="{{ $key }}">{{ $customer->country->name; }}</option>
                                 <?php endforeach;  ?>
                             </select>
                         </div>
