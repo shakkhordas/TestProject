@@ -83,9 +83,9 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        $customerInfo = Customer::find($id);
-        //dd($customerInfo);
-        return view('customers.show', compact('customerInfo'));
+        $customer = Customer::find($id);
+        //dd($customer);
+        return view('customers.show', compact('customer'));
     }
 
     public function search(Request $request)
