@@ -56,7 +56,7 @@
                                         <td>{{ $customer->mobile }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->address }}</td>
-                                        <td>{{ $customer->dob }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($customer->dob)->format('d/m/Y') }}</td>
                                         <td>{{ $customer->country->name }}</td>
                                         <td>
                                             @if ($customer->status)
@@ -65,6 +65,9 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
+                                        <td><a href="{{ url('customers/show', $customer->id) }}"><button
+                                                    type="button" class="btn btn-info">View</button></a>
+                                        </td>
                                         <td><a href="{{ url('customers/edit', $customer->id) }}"><button
                                                     type="button" class="btn btn-primary">Edit</button></a></td>
                                         <td>
@@ -72,7 +75,7 @@
                                                 onsubmit="return confirm('Are you sure you want to delete ?')">
                                                 @csrf
                                                 @method('Delete')
-                                                <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                                <input type="submit" value="Delete" class="btn btn-danger">
                                             </form>
                                         </td>
                                         <br>

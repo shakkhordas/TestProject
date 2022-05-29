@@ -53,7 +53,7 @@
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->mobile }}</td>
                                         <td>{{ $customer->email }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($customer->created_at)->format('d/m/Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($customer->dob)->format('d/m/Y') }}</td>
                                         <td>{{ $customer->country->name ?? '' }}</td>
                                         <td>
                                             @if ($customer->status)

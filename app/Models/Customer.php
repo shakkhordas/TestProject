@@ -12,9 +12,5 @@ class Customer extends Model
     public function country() {
         return $this->belongsTo(Country::class, 'country_id');
     }
-
-    public function info() {
-        return $this->belongsTo(CustomerInfo::class, 'email');
-    }
     
 }

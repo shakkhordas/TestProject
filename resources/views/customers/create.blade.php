@@ -53,7 +53,7 @@
                             <label for="">Country ID</label>
                             <select name="country_id" class="form-control">
                                 <?php foreach($countries as $key => $country) :  ?>
-                                <option value="{{ $key }}">{{ $country->name }}</option>
+                                <option value="{{ $country->country_id }}">{{ $country->name }}</option>
                                 <?php endforeach;  ?>
                             </select>
                         </div>
