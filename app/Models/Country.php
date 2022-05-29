@@ -11,6 +11,7 @@ class Country extends Model
     use HasFactory;
     
     public function customer() {
-        $this->hasMany(Customer::class, 'country_id');
+        //$this->hasMany(Customer::class, 'country_id');
+        
     }
 }
