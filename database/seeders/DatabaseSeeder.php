@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Customer;
+use Faker\Factory as Faker;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Customer;
-use App\Models\User;
-
-use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {

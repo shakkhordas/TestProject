@@ -79,7 +79,7 @@
                                     </tr>
                                 @endforeach
                             @else
-                                <div class="px-3">
+                                <div class="px-4">
                                     <h2>NO CUSTOMERS FOUND</h2>
                                 </div>
                             @endif

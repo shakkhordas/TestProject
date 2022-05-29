@@ -32,12 +32,7 @@ class CustomersController extends Controller
     public function create()
     {
         $customers = Customer::get();
-        $countries = array([
-             1 => 'Bangladesh',
-             2 => 'India',
-             3 => 'Sri Lanka',
-        ]);
-        //dd($customers);
+        $countries = Country::all();
         return view('customers.create', compact('customers', 'countries'));
     }
 
@@ -112,11 +107,7 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        $countries = array([
-            1 => 'Bangladesh',
-            2 => 'India',
-            3 => 'Sri Lanka',
-        ]);
+        $countries = Country::all();
         //dd($countries);
         return view('customers.edit', compact('customer', 'countries'));
     }
@@ -169,4 +160,6 @@ class CustomersController extends Controller
         $customer->delete();
         return redirect()->route('customers.index')->with('Success', 'Customer Deleted Successfully!');
     }
+
+    
 }

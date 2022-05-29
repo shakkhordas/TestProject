@@ -13,7 +13,8 @@ class Customer extends Model
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    public function additionalInfo() {
-        return $this->belongsTo(CustomersAdditionalInfo::class, 'id');
+    public function info() {
+        return $this->belongsTo(CustomerInfo::class, 'email');
     }
+    
 }
