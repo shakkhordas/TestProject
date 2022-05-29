@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Info;
 use App\Models\Country;
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageServiceProvider;
 
@@ -19,8 +20,8 @@ class CustomersController extends Controller
     {
 
         $customers = Customer::paginate(10);
-        //dd($customers);
-
+        $info = Info::all();
+        //dd($info);
         return view('customers.index', compact('customers'));
     }
 
@@ -79,8 +80,13 @@ class CustomersController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
+        
         //dd($customer);
+
+        //$info = Info::all();
+        
         return view('customers.show', compact('customer'));
+        
     }
 
     public function search(Request $request)
@@ -108,7 +114,7 @@ class CustomersController extends Controller
     {
         $customer = Customer::find($id);
         $countries = Country::all();
-        //dd($countries);
+        
         return view('customers.edit', compact('customer', 'countries'));
     }
 

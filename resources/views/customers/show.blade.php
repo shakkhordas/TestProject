@@ -41,6 +41,7 @@
                                     <td><strong class="text-danger">Inactive</strong></td>
                                 @endif
                             </tr>
+                            
                             <tr>
                                 <th>Member Since</th>
                                 <td>{{ \Carbon\Carbon::parse($customer->created_at)->format('d/m/Y') }}</td>
