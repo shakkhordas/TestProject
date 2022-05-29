@@ -18,7 +18,8 @@ class CustomersController extends Controller
     public function index()
     {
 
-        $customers = Customer::get();
+        $customers = Customer::paginate(10);
+        //dd($customers);
 
         return view('customers.index', compact('customers'));
     }
@@ -31,12 +32,13 @@ class CustomersController extends Controller
     public function create()
     {
         $customers = Customer::get();
-        // $countries = array([
-        //     1 => 'Bangladesh',
-        //     2 => 'India',
-        //     3 => 'Sri Lanka',
-        // ]);
-        return view('customers.create', compact('customers'));
+        $countries = array([
+             1 => 'Bangladesh',
+             2 => 'India',
+             3 => 'Sri Lanka',
+        ]);
+        //dd($customers);
+        return view('customers.create', compact('customers', 'countries'));
     }
 
     /**
@@ -79,9 +81,9 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $customer = Customer::get();
+        $customer = Customer::find($id);
         
         return view('customers.show', compact('customer'));
     }
@@ -110,12 +112,13 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        // $countries = array([
-        //     1 => 'Bangladesh',
-        //     2 => 'India',
-        //     3 => 'Sri Lanka',
-        // ]);
-        return view('customers.edit', compact('customer'));
+        $countries = array([
+            1 => 'Bangladesh',
+            2 => 'India',
+            3 => 'Sri Lanka',
+        ]);
+        //dd($countries);
+        return view('customers.edit', compact('customer', 'countries'));
     }
 
     /**
@@ -144,19 +147,13 @@ class CustomersController extends Controller
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');
 
-        /*
+        
         if (!empty($request->image_file)) {
             $customer->image_file = $request->image_file;
-        }*/
-
-
-        if ($request->hasFile('image_file')) {
-            $customer['image_file'] = $request->file('image_file')->store('img', 'public');
         }
-
         $customer->save();
 
-        //dd($customer);
+        //dd($customer->image_file);
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }

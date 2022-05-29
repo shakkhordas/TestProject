@@ -48,7 +48,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="75" width="75"
-                                                src="{{ $customer->image_file ? asset('storage/') . $customer->image_file : asset('img/No_image_available.png') }}" />
+                                                src="{{ ($customer->image_file)? asset('images/'.$customer->image_file): asset('images/no-photo.png') }}" />
                                         </td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->mobile }}</td>
@@ -83,8 +83,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center mt-5 p-5">
-
+        <div class="mt-5 p-5">
+            {{ $customers->links() }}
         </div>
     </div>
 </x-app-layout>
