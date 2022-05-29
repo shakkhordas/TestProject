@@ -27,6 +27,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-100">
+                    <div class="px-6">
+                        <a href="{{ route('customers.index') }}"><button class="btn btn-dark">Back</button></a>
+                    </div>
                     <table class="table table-striped table-bordered table-hover">
                         <thead class="thead-dark">
                             <tr>
@@ -43,28 +46,29 @@
                         </thead>
                         <tbody>
                             @if ($customers->isNotEmpty())
-                                @foreach ($customers as $data)
+                                @foreach ($customers as $key => $customer)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td><img class="img-circle" height="50" width="50"
-                                                src="{{ url('img/', $data->image_file) }}" /></td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->mobile }}</td>
-                                        <td>{{ $data->email }}</td>
-                                        <td>{{ $data->address }}</td>
-                                        <td>{{ $data->dob }}</td>
-                                        <td>{{ $countries[$data->country_id] }}</td>
+                                                src="{{ $customer->image_file ? asset('images/' . $customer->image_file) : asset('images/no-photo.png') }}" />
+                                        </td>
+                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->mobile }}</td>
+                                        <td>{{ $customer->email }}</td>
+                                        <td>{{ $customer->address }}</td>
+                                        <td>{{ $customer->dob }}</td>
+                                        <td>{{ $customer->country->name }}</td>
                                         <td>
-                                            @if ($data->status)
+                                            @if ($customer->status)
                                                 <strong class="text-success text-align-justify">Active</strong>
                                             @else
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="{{ url('customers/edit', $data->id) }}"><button type="button"
-                                                    class="btn btn-primary">Edit</button></a></td>
+                                        <td><a href="{{ url('customers/edit', $customer->id) }}"><button
+                                                    type="button" class="btn btn-primary">Edit</button></a></td>
                                         <td>
-                                            <form action="{{ route('customers.delete', $data) }}" method="POST"
+                                            <form action="{{ route('customers.delete', $customer) }}" method="POST"
                                                 onsubmit="return confirm('Are you sure you want to delete ?')">
                                                 @csrf
                                                 @method('Delete')
@@ -75,7 +79,7 @@
                                     </tr>
                                 @endforeach
                             @else
-                                <div class="">
+                                <div class="px-3">
                                     <h2>NO CUSTOMERS FOUND</h2>
                                 </div>
                             @endif
