@@ -31,7 +31,7 @@ Route::delete('users/delete', [App\Http\Controllers\UsersController::class, 'des
 
 Route::get('customers/index', [App\Http\Controllers\CustomersController::class, 'index'])->name('customers.index');
 Route::get('customers/search', [App\Http\Controllers\CustomersController::class, 'search'])->name('customers.search');
-Route::get('customers/show', [App\Http\Controllers\CustomersController::class, 'show'])->name('customers.show');
+Route::get('customers/show/{id}', [App\Http\Controllers\CustomersController::class, 'show'])->name('customers.show');
 Route::get('customers/create', [App\Http\Controllers\CustomersController::class, 'create'])->name('customers.create');
 Route::post('customers/create', [App\Http\Controllers\CustomersController::class, 'store'])->name('customers.store');
 Route::get('customers/edit/{id}', [App\Http\Controllers\CustomersController::class, 'edit'])->name('customers.edit');

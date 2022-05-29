@@ -62,7 +62,7 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="{{ url('customers/show') }}"><button type="button"
+                                        <td><a href="{{ url('customers/show', $customer->id) }}"><button type="button"
                                                     class="btn btn-info">View</button></a>
                                         </td>
                                         <td><a href="{{ url('customers/edit', $customer->id) }}"><button type="button"
