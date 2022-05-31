@@ -8,14 +8,14 @@
     <title>Customers DataTable</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <table id="customer_data" class="table table-striped table-bordered table-hover">
+                <table id="customerData" class="table table-striped table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Sl.</td>
@@ -31,7 +31,7 @@
                     <tbody>
                         @foreach ($customers as $key => $customer)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td scope="row">{{ $loop->iteration }}</td>
                                 <td><img class="img-circle" height="75" width="75"
                                         src="{{ $customer->image_file
                                             ? asset('storage/customer_images/' . $customer->image_file)
@@ -49,19 +49,6 @@
                                         <strong class="text-danger text-align-justify">Inactive</strong>
                                     @endif
                                 </td>
-                                <td><a href="{{ url('customers/show', $customer->id) }}"><button type="button"
-                                            class="btn btn-info">View</button></a>
-                                </td>
-                                <td><a href="{{ url('customers/edit', $customer->id) }}"><button type="button"
-                                            class="btn btn-primary">Edit</button></a></td>
-                                <td>
-                                    <form action="{{ route('customers.delete', $customer) }}" method="POST"
-                                        onsubmit="return confirm('Are you sure you want to delete ?')">
-                                        @csrf
-                                        @method('Delete')
-                                        <input type="submit" value="Delete" class="btn btn-danger">
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -69,13 +56,13 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#customer_data').DataTable();
+            $('#customerData').DataTable();
         });
     </script>
 </body>
