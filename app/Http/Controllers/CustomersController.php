@@ -16,8 +16,8 @@ class CustomersController extends Controller
      */
     public function index()
     {
-
         $customers = Customer::paginate(10);
+
         return view('customers.index', compact('customers'));
     }
 
@@ -37,6 +37,7 @@ class CustomersController extends Controller
     {
         $customers = Customer::get();
         $countries = Country::all();
+
         return view('customers.create', compact('customers', 'countries'));
     }
 
@@ -56,16 +57,6 @@ class CustomersController extends Controller
             'dob' => 'required|date',
             'country_id' => 'numeric|required|min:1'
         ]);
-
-        // $customer = new Customer;
-
-        // $customer->name = $request->name;
-        // $customer->mobile = $request->mobile;
-        // $customer->email = $request->email;
-        // $customer->address = $request->address;
-        // $customer->dob = $request->dob;
-        // $customer->country_id = $request->country_id;
-        // $customer->status = $request->has('status');
 
         $customer = $request->all();
         $customer['status'] = $request->has('status');
@@ -91,24 +82,19 @@ class CustomersController extends Controller
     {
         $customer = Customer::find($id);
 
-        //dd($customer);
-
-        //$info = Info::all();
-
         return view('customers.show', compact('customer'));
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
+
         $customers = Customer::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('mobile', 'LIKE', '%' . $search . '%')
             ->orWhere('email', 'LIKE', '%' . $search . '%')
             ->orWhere('address', 'LIKE', '%' . $search . '%')
             ->get();
-
-        //dd($customers);
 
         return view('customers.search', compact('customers'));
     }
@@ -145,9 +131,6 @@ class CustomersController extends Controller
             'country_id' => 'numeric|required|min:1',
         ]);
 
-        // $sessionData = $request->session()->all();
-        // dd($sessionData);
-
         $customer->name = $request->name;
         $customer->mobile = $request->mobile;
         $customer->email = $request->email;
@@ -176,6 +159,7 @@ class CustomersController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
+
         return redirect()->route('customers.index')->with('Success', 'Customer Deleted Successfully!');
     }
 }

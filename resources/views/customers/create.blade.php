@@ -53,7 +53,8 @@
                             <label for="">Country ID</label>
                             <select id="selectCountry" name="country_id" class="form-control">
                                 <?php foreach($countries as $key => $country) :  ?>
-                                <option id="countryOption" value="{{ $country->country_id }}">{{ $country->name }}</option>
+                                <option id="countryOption" value="{{ $country->country_id }}">{{ $country->name }}
+                                </option>
                                 <?php endforeach;  ?>
                             </select>
                         </div>
@@ -81,7 +82,7 @@
     @endif
 
     <script>
-        $('#selectCountry').click( function() {
+        $('#selectCountry').click(function() {
             $('#countryOption').slideDown();
         });
     </script>
