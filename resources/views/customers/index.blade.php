@@ -27,7 +27,7 @@
                     <div class="d-inline-flex p-2">
                         <a href="{{ route('customers.test') }}">
                             <button type="button" class="btn btn-dark">
-                                Open as DataTable
+                                Open DataTable
                             </button>
                         </a>
                     </div>
