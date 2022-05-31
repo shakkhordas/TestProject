@@ -23,6 +23,15 @@
                         <input type="text" name="search" required />
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
+
+                    <div class="d-inline-flex p-2">
+                        <a href="{{ route('customers.test') }}">
+                            <button type="button" class="btn btn-dark">
+                                Open as DataTable
+                            </button>
+                        </a>
+                    </div>
+
                     <div style="text-align:right">
                         <a href="{{ url('customers/create') }}">
                             <button type="button" class="btn btn-warning">New
@@ -30,7 +39,7 @@
                         </a>
                     </div>
                     <div class="table-responsive">
-                        <table id="customer_data" class="table table-striped table-bordered table-hover">
+                        <table id="customerData" class="table table-striped table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Sl.</td>
@@ -41,12 +50,15 @@
                                     <th scope="col">Date of Birth</td>
                                     <th scope="col">Country</td>
                                     <th scope="col">Status</td>
+                                    <th scope="col">Details</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($customers as $key => $customer)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td scope="row">{{ $loop->iteration }}</td>
                                         <td><img class="img-circle" height="75" width="75"
                                                 src="{{ $customer->image_file
                                                     ? asset('storage/customer_images/' . $customer->image_file)
@@ -89,4 +101,9 @@
             {{ $customers->links() }}
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#customerData').DataTable();
+        });
+    </script>
 </x-app-layout>
