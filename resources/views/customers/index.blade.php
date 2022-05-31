@@ -47,8 +47,10 @@
                                 @foreach ($customers as $key => $customer)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td><img class="img-thumbnail" height="75" width="75"
-                                                src="{{ ($customer->image_file)? asset('images/'.$customer->image_file): asset('images/no-photo.png') }}" />
+                                        <td><img class="img-circle" height="75" width="75"
+                                                src="{{ $customer->image_file
+                                                    ? asset('storage/customer_images/' . $customer->image_file)
+                                                    : asset('images/no-photo.png') }}" />
                                         </td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->mobile }}</td>
@@ -62,11 +64,11 @@
                                                 <strong class="text-danger text-align-justify">Inactive</strong>
                                             @endif
                                         </td>
-                                        <td><a href="{{ url('customers/show', $customer->id) }}"><button type="button"
-                                                    class="btn btn-info">View</button></a>
+                                        <td><a href="{{ url('customers/show', $customer->id) }}"><button
+                                                    type="button" class="btn btn-info">View</button></a>
                                         </td>
-                                        <td><a href="{{ url('customers/edit', $customer->id) }}"><button type="button"
-                                                    class="btn btn-primary">Edit</button></a></td>
+                                        <td><a href="{{ url('customers/edit', $customer->id) }}"><button
+                                                    type="button" class="btn btn-primary">Edit</button></a></td>
                                         <td>
                                             <form action="{{ route('customers.delete', $customer) }}" method="POST"
                                                 onsubmit="return confirm('Are you sure you want to delete ?')">

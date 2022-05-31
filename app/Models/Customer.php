@@ -9,6 +9,8 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'mobile', 'email', 'address', 'dob', 'country_id', 'status', 'image_file'];
+
     public function country() {
         return $this->belongsTo(Country::class, 'country_id');
     }

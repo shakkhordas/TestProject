@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Info;
 use App\Models\Country;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageServiceProvider;
 
 class CustomersController extends Controller
 {
@@ -20,8 +18,6 @@ class CustomersController extends Controller
     {
 
         $customers = Customer::paginate(10);
-        $info = Info::all();
-        //dd($info);
         return view('customers.index', compact('customers'));
     }
 
@@ -54,19 +50,26 @@ class CustomersController extends Controller
             'country_id' => 'numeric|required|min:1'
         ]);
 
-        $customer = new Customer;
+        // $customer = new Customer;
 
-        $customer->name = $request->name;
-        $customer->mobile = $request->mobile;
-        $customer->email = $request->email;
-        $customer->address = $request->address;
-        $customer->dob = $request->dob;
-        $customer->country_id = $request->country_id;
-        $customer->status = $request->has('status');
-        $customer->image_file = $request->image_file;
-        $customer->save();
+        // $customer->name = $request->name;
+        // $customer->mobile = $request->mobile;
+        // $customer->email = $request->email;
+        // $customer->address = $request->address;
+        // $customer->dob = $request->dob;
+        // $customer->country_id = $request->country_id;
+        // $customer->status = $request->has('status');
 
-        //dd($customer);
+        $customer = $request->all();
+        $customer['status'] = $request->has('status');
+
+        if (!empty($request->file('image_file'))) {
+            $fileName = $request->file('image_file')->getClientOriginalName();
+            $request->file('image_file')->storeAs('customer_images', $fileName);
+            $customer['image_file'] = $fileName;
+        }
+
+        $customer = Customer::create($customer);
 
         return redirect()->route('customers.index')->with('success', 'Customer Created Successfully');
     }
@@ -80,13 +83,12 @@ class CustomersController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        
+
         //dd($customer);
 
         //$info = Info::all();
-        
+
         return view('customers.show', compact('customer'));
-        
     }
 
     public function search(Request $request)
@@ -114,7 +116,7 @@ class CustomersController extends Controller
     {
         $customer = Customer::find($id);
         $countries = Country::all();
-        
+
         return view('customers.edit', compact('customer', 'countries'));
     }
 
@@ -144,13 +146,13 @@ class CustomersController extends Controller
         $customer->country_id = $request->country_id;
         $customer->status = $request->has('status');
 
-        
-        if (!empty($request->image_file)) {
-            $customer->image_file = $request->image_file;
+        if (!empty($request->file('image_file'))) {
+            $fileName = $request->file('image_file')->getClientOriginalName();
+            $file = $request->file('image_file')->storeAs('customer_images', $fileName);
+            $customer->image_file = $fileName;
         }
-        $customer->save();
 
-        //dd($customer->image_file);
+        $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
@@ -166,6 +168,4 @@ class CustomersController extends Controller
         $customer->delete();
         return redirect()->route('customers.index')->with('Success', 'Customer Deleted Successfully!');
     }
-
-    
 }
