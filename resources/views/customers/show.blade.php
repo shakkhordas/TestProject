@@ -41,7 +41,7 @@
                                     <td><strong class="text-danger">Inactive</strong></td>
                                 @endif
                             </tr>
-                            
+
                             <tr>
                                 <th>Member Since</th>
                                 <td>{{ \Carbon\Carbon::parse($customer->created_at)->format('d/m/Y') }}</td>
@@ -54,8 +54,10 @@
                     </table>
                 </div>
                 <div class="col-5">
-                    <img class="img-thumbnail rounded mx-auto d-block" src="{{ ($customer->image_file)? 
-                    asset('images/'.$customer->image_file) : asset('images/no-photo.png') }}"/>
+                    <img class="img-thumbnail rounded mx-auto d-block" height="300" width="300"
+                    src="{{ $customer->image_file
+                            ? asset('storage/customer_images/' . $customer->image_file)
+                            : asset('images/no-photo.png') }}" />
                 </div>
             </div>
         </div>

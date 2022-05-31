@@ -16,10 +16,13 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+        
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     </body>
 </html>

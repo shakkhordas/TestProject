@@ -21,6 +21,12 @@ class CustomersController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+    public function test()
+    {
+        $customers = Customer::all();
+        return view('customers.test', compact('customers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
