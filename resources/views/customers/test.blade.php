@@ -13,6 +13,13 @@
 
 <body>
     <div class="container mt-5">
+        <div class="mt-2 p-3 d-flex flex-row">
+            <a href="{{ route('customers.index') }}">
+                <button type="button" class="btn btn-dark">
+                    Go Back
+                </button>
+            </a>
+        </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table id="customerData" class="table table-striped table-bordered table-hover">
@@ -65,6 +72,7 @@
             $('#customerData').DataTable();
         });
     </script>
+
 </body>
 
 </html>

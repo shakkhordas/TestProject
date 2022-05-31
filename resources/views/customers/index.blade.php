@@ -34,7 +34,7 @@
 
                     <div style="text-align:right">
                         <a href="{{ url('customers/create') }}">
-                            <button type="button" class="btn btn-warning">New
+                            <button type="button" class="btn btn-warning"> Create New
                                 Customer</button>
                         </a>
                     </div>
