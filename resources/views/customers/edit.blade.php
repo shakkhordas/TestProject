@@ -21,7 +21,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('customers.update', $customer) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('customers.update', $customer) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="form-group col-xs-2">
@@ -51,9 +52,10 @@
                         </div>
                         <div class="form-group col-xs-2">
                             <label for="">Country ID</label>
-                            <select name="country_id" class="form-control">
+                            <select id="selectCountry" name="country_id" class="form-control">
                                 <?php foreach($countries as $key=>$country) :  ?>
-                                <option value="{{ $country->country_id }}">{{ $country->name }}</option>
+                                <option id="countryOption" value="{{ $country->country_id }}">{{ $country->name }}
+                                </option>
                                 <?php endforeach;  ?>
                             </select>
                         </div>
@@ -71,4 +73,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $('#selectCountry').click(function() {
+            $('#countryOption').slideDown();
+        });
+    </script>
 </x-app-layout>
