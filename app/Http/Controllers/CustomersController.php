@@ -24,6 +24,7 @@ class CustomersController extends Controller
     public function test()
     {
         $customers = Customer::all();
+
         return view('customers.test', compact('customers'));
     }
 
@@ -143,6 +144,9 @@ class CustomersController extends Controller
             'dob' => 'required|date',
             'country_id' => 'numeric|required|min:1',
         ]);
+
+        // $sessionData = $request->session()->all();
+        // dd($sessionData);
 
         $customer->name = $request->name;
         $customer->mobile = $request->mobile;
