@@ -162,8 +162,8 @@ class CustomersController extends Controller
         $customers = Customer::get();
         //dd($customers);
         $pdf = PDF::loadview('customers.data', compact('customers'))
-                    ->setOptions(['defaultFont' => 'serif'])
-                    ->setPaper('A4', 'landscape');
+            ->setOptions(['defaultFont' => 'sans-serif'])
+            ->setPaper('A4', 'landscape');
         return $pdf->download('customers.pdf');
         //exit;
     }
