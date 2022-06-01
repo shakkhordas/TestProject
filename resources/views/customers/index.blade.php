@@ -23,30 +23,29 @@
                         <input type="text" name="search" required />
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
-
-                    <div class="d-inline-flex p-2">
-                        <a href="{{ route('customers.test') }}">
-                            <button type="button" class="btn btn-dark">
-                                Open DataTable
-                            </button>
-                        </a>
+                    <div class="d-flex flex-row-reverse">
+                        <div class="p-2">
+                            <a href="{{ url('customers/create') }}">
+                                <button type="button" class="btn btn-warning"> Create New
+                                    Customer</button>
+                            </a>
+                        </div>
+                        <div class="p-2">
+                            <a href="{{ route('customers.download') }}">
+                                <button type="button" class="btn btn-dark">
+                                    Download PDF
+                                </button>
+                            </a>
+                        </div>
+                        <div class="p-2">
+                            <a href="{{ route('customers.test') }}">
+                                <button type="button" class="btn btn-dark">
+                                    Open DataTable
+                                </button>
+                            </a>
+                        </div>
                     </div>
-
-                    <div class="d-inline-flex">
-                        <a href="{{ route('customers.download') }}">
-                            <button type="button" class="btn btn-dark">
-                                Download PDF
-                            </button>
-                        </a>
-                    </div>
-
-                    <div style="text-align:right">
-                        <a href="{{ url('customers/create') }}">
-                            <button type="button" class="btn btn-warning"> Create New
-                                Customer</button>
-                        </a>
-                    </div>
-                    <div class="table-responsive">
+                    <div class="mt-3 table-responsive">
                         <table id="customerData" class="table table-striped table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
@@ -105,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-5 p-5">
+        <div class="mt-3 p-3">
             {{ $customers->links() }}
         </div>
     </div>

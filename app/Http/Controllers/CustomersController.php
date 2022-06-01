@@ -151,11 +151,21 @@ class CustomersController extends Controller
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
     }
 
-    public function downloadPdf()
+    public function data()
     {
         $customers = Customer::all();
-        $pdf = PDF::loadview('customers.index', compact('customers'));
+        return view('customers.data', compact('customers'));
+    }
+
+    public function downloadPdf()
+    {
+        $customers = Customer::get();
+        //dd($customers);
+        $pdf = PDF::loadview('customers.data', compact('customers'))
+                    ->setOptions(['defaultFont' => 'serif'])
+                    ->setPaper('A4', 'landscape');
         return $pdf->download('customers.pdf');
+        //exit;
     }
 
     /**
