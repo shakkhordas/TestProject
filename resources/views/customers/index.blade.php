@@ -32,6 +32,14 @@
                         </a>
                     </div>
 
+                    <div class="d-inline-flex">
+                        <a href="{{ route('customers.download') }}">
+                            <button type="button" class="btn btn-dark">
+                                Download PDF
+                            </button>
+                        </a>
+                    </div>
+
                     <div style="text-align:right">
                         <a href="{{ url('customers/create') }}">
                             <button type="button" class="btn btn-warning"> Create New

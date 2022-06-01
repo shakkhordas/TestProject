@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Customer;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -148,6 +149,13 @@ class CustomersController extends Controller
         $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Customer Updated Successfully');
+    }
+
+    public function downloadPdf()
+    {
+        $customers = Customer::all();
+        $pdf = PDF::loadview('customers.index', compact('customers'));
+        return $pdf->download('customers.pdf');
     }
 
     /**
