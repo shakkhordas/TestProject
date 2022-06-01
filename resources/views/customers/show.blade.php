@@ -53,7 +53,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-5">
+                <div class="py-5 col-5">
                     <img class="img-thumbnail rounded mx-auto d-block" height="300" width="300"
                     src="{{ $customer->image_file
                             ? asset('storage/customer_images/' . $customer->image_file)
