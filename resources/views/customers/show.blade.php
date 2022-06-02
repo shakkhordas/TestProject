@@ -54,6 +54,7 @@
                     </table>
                 </div>
                 <div class="py-5 col-5">
+                    <a href="#" class="btn btn-dark py-1 mb-2 d-flex justify-content-center">Add Additional Information</a>
                     <img class="img-thumbnail rounded mx-auto d-block" height="300" width="300"
                         src="{{ $customer->image_file
                             ? asset('storage/customer_images/' . $customer->image_file)
