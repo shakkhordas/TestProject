@@ -42,6 +42,12 @@ class CustomersController extends Controller
         return view('customers.create', compact('customers', 'countries'));
     }
 
+    public function add($id)
+    {   
+        $customer = Customer::find($id);
+        return view('customers.add', compact('customer'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

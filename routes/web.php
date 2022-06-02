@@ -29,6 +29,7 @@ Route::get('users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edi
 Route::post('users/update', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
 Route::delete('users/delete', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.delete');
 
+Route::get('customers/add/{id}', [App\Http\Controllers\CustomersController::class, 'add'])->name('customers.add');
 Route::get('customers/data', [\App\Http\Controllers\CustomersController::class, 'data'])->name('customers.data');
 Route::get('customers/download', [\App\Http\Controllers\CustomersController::class, 'downloadPdf'])->name('customers.download');
 Route::get('customers/test', [\App\Http\Controllers\CustomersController::class, 'test'])->name('customers.test');
